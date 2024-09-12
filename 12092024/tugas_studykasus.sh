@@ -20,19 +20,24 @@ function hitungharga() {
     echo "Berapa anggaran awal proyek? (dalam Rupiah): "
     read modal
 
+    totalgaji=$((jumlahdev * gajidev * projectdur))
+    totalservercost=$((servercost * projectdur))
+    totalcost=$((totalgaji + totalservercost + licensecost + operationcost))
+    sisamodal=$((modal - totalcost))
+
     echo "=========================="
     echo "Jadi, total biaya gaji developernya adalah: Rp $totalgaji" 
     echo "Jadi, total biaya servernya adalah: Rp $totalservercost"
-    echo "Jadi ,total biaya lisensi softwarenya adalah: Rp $licensecost"
-    echo "Jadi ,total biaya operasionalnya adalah: Rp $operationcost"
+    echo "Jadi, total biaya lisensi softwarenya adalah: Rp $licensecost"
+    echo "Jadi, total biaya operasionalnya adalah: Rp $operationcost"
     echo "=========================="
     echo "Jadi, total biaya keseluruhan proyeknya adalah: Rp $totalcost"
     echo "Jadi, sisa modalnya adalah: Rp $sisamodal" 
 
     if [ $sisamodal -lt 0 ]; then
-    echo "Proyek ini melebihi anggaran sebesar Rp ${sisamodal#-}"
+        echo "Proyek ini melebihi anggaran sebesar Rp ${sisamodal#-}"
     else
-    echo "Proyek ini dapat diselesaikan dengan anggaran yang ada."
+        echo  "Proyek ini dapat diselesaikan dengan anggaran yang ada."
     fi
 }
 
